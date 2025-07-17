@@ -1,8 +1,11 @@
 #' Plot and save a first order autoregressive matrix with dimension equals to n
 #'
-#' @param n
-#' @param rho
-#'
+#' @param n   size of the matrix
+#' @param rho correlation
+#' @param save_path Caminho para salvar o gráfico (.png). Se NULL, não salva.
+#' @param width Largura do gráfico salvo, em polegadas.
+#' @param height Altura do gráfico salvo, em polegadas.
+#' @param dpi Resolução do gráfico salvo (dots per inch)
 #' @returns a figure
 #' @export
 #'

@@ -1,11 +1,14 @@
 #' Plot and save a kth order factor analityc matrix with dimension equals to n
 #'
-#' @param n
-#' @param k
-#'
+#' @param n   size of the matrix
+#' @param k   order of FA
+#' @param save_path Caminho para salvar o gráfico (.png). Se NULL, não salva.
+#' @param width Largura do gráfico salvo, em polegadas.
+#' @param height Altura do gráfico salvo, em polegadas.
+#' @param dpi Resolução do gráfico salvo (dots per inch)
 #' @returns a figure
 #' @export
-#'
+
 #' @examples plot_fa(n=5, k = 1, save_path = "plot.png", width = 8, height = 8, dpi = 300)
 
 #'
