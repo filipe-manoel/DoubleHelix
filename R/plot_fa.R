@@ -47,7 +47,7 @@ plot_fa = function(n = 5, k = 1, save_path = NULL, width = 5, height = 5, dpi = 
   L = matrix(runif(n * k, 0.5, 1.5), nrow = n, ncol = k)
   D = diag(runif(n, 0.2, 1))
   cov_matrix = L %*% t(L) + D
-  df = melt(cov_matrix)
+  df = reshape2::melt(cov_matrix)
   total_params = n + n * k  # n específicos + n*k cargas fatoriais
   title = paste0("FA(", k, ") with ", total_params, " params")
   p = base_cartoon_plot(df, title)
