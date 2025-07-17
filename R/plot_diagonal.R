@@ -1,14 +1,14 @@
-#' Plot and save an identity matrix with dimension equals to n
+#' Plot and save a diagonal matrix with dimension equals to n
 #'
 #' @param n
 #'
 #' @returns a figure
 #' @export
 #'
-#' @examples plot_identity(n=5, save_path = "plot.png", width = 8, height = 8, dpi = 300)
+#' @examples plot_diagonal(n=5, save_path = "plot.png", width = 8, height = 8, dpi = 300)
 
 #'
-plot_identity = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300) {
+plot_diagonal = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300) {
 
   # Estética padrão
   base_cartoon_plot = function(df, title, gray_zero = FALSE) {
@@ -40,18 +40,20 @@ plot_identity = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 3
 
   # Definition of the structure
 
-    mat = diag(1, n)
-    df = reshape2::melt(mat)
+  mat = diag(seq(1, n), n)
+  df = reshape2::melt(mat)
+  p = base_cartoon_plot(df, paste0("Diagonal (DIAG, ", n, " params)"), gray_zero = TRUE)
 
-    p = base_cartoon_plot(df, paste0("Identity (ID, 1 param)"), gray_zero = TRUE)
 
-    # Salvar se o caminho for fornecido
-    if (!is.null(save_path)) {
-      ggplot2::ggsave(filename = save_path, plot = p, bg = "transparent", width = width, height = height, dpi = dpi)
-      message("Plot saved at: ", save_path)
-    }
 
-    print(p)
-
+  # Salvar se o caminho for fornecido
+  if (!is.null(save_path)) {
+    ggplot2::ggsave(filename = save_path, plot = p, bg = "transparent", width = width, height = height, dpi = dpi)
+    message("Plot saved at: ", save_path)
   }
+
+  print(p)
+
+}
+
 

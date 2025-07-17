@@ -1,14 +1,15 @@
-#' Plot and save an identity matrix with dimension equals to n
+#' Plot and save a kth order factor analityc matrix with dimension equals to n
 #'
 #' @param n
+#' @param k
 #'
 #' @returns a figure
 #' @export
 #'
-#' @examples plot_identity(n=5, save_path = "plot.png", width = 8, height = 8, dpi = 300)
+#' @examples plot_fa(n=5, k = 1, save_path = "plot.png", width = 8, height = 8, dpi = 300)
 
 #'
-plot_identity = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300) {
+plot_fa = function(n = 5, k = 1, save_path = NULL, width = 5, height = 5, dpi = 300) {
 
   # Estética padrão
   base_cartoon_plot = function(df, title, gray_zero = FALSE) {
@@ -40,18 +41,20 @@ plot_identity = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 3
 
   # Definition of the structure
 
-    mat = diag(1, n)
-    df = reshape2::melt(mat)
+  L = matrix(runif(n * k, 0.5, 1.5), nrow = n, ncol = k)
+  D = diag(runif(n, 0.2, 1))
+  cov_matrix = L %*% t(L) + D
+  df = melt(cov_matrix)
+  total_params = n + n * k  # n específicos + n*k cargas fatoriais
+  title = paste0("FA(", k, ") with ", total_params, " params")
+  p = base_cartoon_plot(df, title)
 
-    p = base_cartoon_plot(df, paste0("Identity (ID, 1 param)"), gray_zero = TRUE)
-
-    # Salvar se o caminho for fornecido
-    if (!is.null(save_path)) {
-      ggplot2::ggsave(filename = save_path, plot = p, bg = "transparent", width = width, height = height, dpi = dpi)
-      message("Plot saved at: ", save_path)
-    }
-
-    print(p)
-
+  # Salvar se o caminho for fornecido
+  if (!is.null(save_path)) {
+    ggplot2::ggsave(filename = save_path, plot = p, bg = "transparent", width = width, height = height, dpi = dpi)
+    message("Plot saved at: ", save_path)
   }
 
+  print(p)
+
+}
