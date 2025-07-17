@@ -18,38 +18,52 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of DoubleHelix is to make graphs, formulas, gifs, figures, and examples more accessible to instructors in teaching genetics and quantitative genetics.
+The goal of `DoubleHelix` is to provide a quick and easy way to create engaging visual resources, including figures, GIFs, and formulas, based on the theory of quantitative genetics.
+
+This package aims to make these resources more accessible to instructors and students, supporting teaching and learning in genetics and quantitative genetics through intuitive and customizable visualizations.
+
+
 
 ## Installation
 
-You can install the development version of DoubleHelix from [GitHub](https://github.com/) with:
+You can install the development version of `DoubleHelix`from [GitHub](https://github.com/filipe-manoel/DoubleHelix) with:
 
 ``` r
 # install.packages("pak")
 pak::pak("filipe-manoel/DoubleHelix")
+
 ```
 
-## Example
+## Examples
 
-This is a basic example which shows you how to solve a common problem:
+
+This is how you can plot and export some common covariance matrices structures.
 
 ```{r example}
-#library(DoubleHelix)
-## basic example code
+library(DoubleHelix)
+
+#Compound Simetry matrix
+DoubleHelix::plot_cs(n = 5, rho = 0.5, save_path = NULL, width = 5, height = 5, dpi = 300)
+
+#Unstructured matrix
+DoubleHelix::plot_us(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300)
+
+#First order factor analytic matrix
+DoubleHelix::plot_fa(n = 5, k = 1, save_path = NULL, width = 5, height = 5, dpi = 300)
+
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
-```{r cars}
-summary(cars)
-```
+## Development Status
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+This package is in active development and currently in an experimental stage.
 
-You can also embed plots, for example:
+Contributions are welcome!
+Feel free to fork the repository, submit pull requests, or open issues via [GitHub](https://github.com/filipe-manoel/DoubleHelix).
 
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+## License
+
+This package is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+

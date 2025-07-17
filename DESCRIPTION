@@ -1,9 +1,11 @@
 Package: DoubleHelix
-Title: What the Package Does (One Line, Title Case)
+Title: Creation of visual resources based on the theory of quantitative genetics.
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Filipe", "Ferreira", , "ferreira.fmanoel@gmail.com", role = c("aut", "cre"))
+Description: 
+The goal of DoubleHelix is to allow the quick and easy creation of visual resources (figures, gifs and formulas) based on the theory of quantitative genetics. 
+The idea is to have this resources more accessible to instructors in teaching genetics and quantitative genetics.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
