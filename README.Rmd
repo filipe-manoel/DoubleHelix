@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of DoubleHelix is to ...
+The goal of DoubleHelix is to make graphs, formulas, gifs, figures, and examples more accessible to instructors in teaching genetics and quantitative genetics.
 
 ## Installation
 
@@ -34,7 +34,7 @@ pak::pak("filipe-manoel/DoubleHelix")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-library(DoubleHelix)
+#library(DoubleHelix)
 ## basic example code
 ```
 
