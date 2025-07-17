@@ -6,13 +6,16 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of DoubleHelix is to make graphs, formulas, gifs, figures, and
-examples more accessible to instructors in teaching genetics and
+The goal of `DoubleHelix` is to allow the quick and easy creation of
+visual resources (figures, gifs and formulas) based on the theory of
 quantitative genetics.
+
+The idea is to have this resources more accessible to instructors in
+teaching genetics and quantitative genetics.
 
 ## Installation
 
-You can install the development version of DoubleHelix from
+You can install the development version of `DoubleHelix` from
 [GitHub](https://github.com/) with:
 
 ``` r
@@ -20,35 +23,32 @@ You can install the development version of DoubleHelix from
 pak::pak("filipe-manoel/DoubleHelix")
 ```
 
-## Example
+## Examples
 
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-#library(DoubleHelix)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+This is how you can plot and export to your local directory some common
+covariance matrices structures.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+library(DoubleHelix)
+
+#Compound Simetry matrix
+DoubleHelix::plot_cs(n = 5, rho = 0.5, save_path = NULL, width = 5, height = 5, dpi = 300)
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
+<img src="man/figures/README-example-1.png" width="100%" />
 
-You can also embed plots, for example:
+``` r
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+#Unstructured matrix
+DoubleHelix::plot_us(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300)
+```
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+<img src="man/figures/README-example-2.png" width="100%" />
+
+``` r
+
+#First order factor analytic matrix
+DoubleHelix::plot_fa(n = 5, k = 1, save_path = NULL, width = 5, height = 5, dpi = 300)
+```
+
+<img src="man/figures/README-example-3.png" width="100%" />
