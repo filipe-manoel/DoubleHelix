@@ -4,10 +4,11 @@
 #'
 #' @param n
 #'
-#' @returns
+#' @returns a figure
 #' @export
 #'
-#' @examples plot_identity(n=5)
+#' @examples plot_identity(5, save_path = "identity_plot_large.png", width = 8, height = 8, dpi = 300)
+
 #'
 plot_identity <- function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300) {
 

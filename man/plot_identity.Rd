@@ -4,7 +4,7 @@
 \alias{plot_identity}
 \title{Plot a identity matrix with dimension equals to n}
 \usage{
-plot_identity(n = 5)
+plot_identity(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300)
 }
 \arguments{
 \item{n}{}
