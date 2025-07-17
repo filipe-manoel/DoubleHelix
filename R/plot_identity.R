@@ -9,7 +9,7 @@
 #'
 #' @examples plot_identity(n=5)
 #'
-plot_identity <- function(n = 5) {
+plot_identity <- function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300) {
 
   # Estética padrão
   base_cartoon_plot <- function(df, title, gray_zero = FALSE) {
@@ -33,7 +33,7 @@ plot_identity <- function(n = 5) {
       ggplot2::ggtitle(title) +
       ggplot2::theme(
         plot.title = ggplot2::element_text(family = "sans", size = 13, hjust = 0.5, face = "bold"),
-        plot.background = ggplot2::element_rect(fill = "cornsilk", color = NA)
+        plot.background = ggplot2::element_rect(fill = "transparent", color = NA)
       ) +
       ggplot2::coord_fixed() +
       ggplot2::scale_y_reverse()
@@ -41,8 +41,18 @@ plot_identity <- function(n = 5) {
 
   # Definition of the structure
 
-  mat <- diag(1, n)
-  df <- reshape2::melt(mat)
-  p1 = base_cartoon_plot(df, paste0("Identity (ID, 1 param)"), gray_zero = TRUE)
-  print(p1)
-}
+    mat <- diag(1, n)
+    df <- reshape2::melt(mat)
+
+    p <- base_cartoon_plot(df, paste0("Identity (ID, 1 param)"), gray_zero = TRUE)
+
+    # Salvar se o caminho for fornecido
+    if (!is.null(save_path)) {
+      ggplot2::ggsave(filename = save_path, plot = p, bg = "transparent", width = width, height = height, dpi = dpi)
+      message("Plot saved at: ", save_path)
+    }
+
+    print(p)
+
+  }
+
