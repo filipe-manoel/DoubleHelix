@@ -2,10 +2,10 @@
 #'
 #' @param n   size of the matrix
 #' @param rho correlation
-#' @param save_path Caminho para salvar o gráfico (.png). Se NULL, não salva.
-#' @param width Largura do gráfico salvo, em polegadas.
-#' @param height Altura do gráfico salvo, em polegadas.
-#' @param dpi Resolução do gráfico salvo (dots per inch)
+#' @param save_path Path to save the chart (.png). If NULL, do not save.
+#' @param width Width of the saved chart, in inches.
+#' @param height Height of the saved chart, in inches.
+#' @param dpi Resolution of the saved chart (dots per inch)
 #' @returns a figure
 #' @export
 #'
