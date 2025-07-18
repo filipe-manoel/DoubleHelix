@@ -14,9 +14,26 @@
 #'
 plot_ar1 = function(n = 5, rho = 0.7, save_path = NULL, width = 5, height = 5, dpi = 300) {
 
-  # Estética padrão
 
+  # Definition of the structure
+  mat = toeplitz(rho^(0:(n-1)))
+  df = reshape2::melt(mat)
 
+# Estética padrão
+
+  # Definir as cores
+  cov_fill_scale <- function(limits = c(0, 1)) {
+    # paleta contínua RColorBrewer, zeros → cinza claro
+    scale_fill_distiller(
+      palette   = "YlOrRd",
+      direction = 1,
+      limits    = limits,
+      oob       = scales::squish,
+      na.value  = "grey90"
+    )
+  }
+
+  # Definir a base do gráfico
   base_cartoon_plot <- function(df, title) {
     df$fill_val <- ifelse(df$value == 0, NA, df$value)
 
@@ -25,11 +42,7 @@ plot_ar1 = function(n = 5, rho = 0.7, save_path = NULL, width = 5, height = 5, d
         ggplot2::geom_tile(color = "black", size = 1),
         sigma = 5, x_offset = 2, y_offset = 2, colour = "grey50"
       ) +
-      ggplot2::scale_fill_distiller(
-        palette  = "YlOrRd",   # qualquer paleta contínua do RColorBrewer
-        direction= 1,
-        na.value = "grey90"
-      ) +
+      cov_fill_scale(limits = c(0, 1)) +
       ggplot2::guides(fill = "none") +
       ggplot2::theme_void() +
       ggplot2::ggtitle(title) +
@@ -39,14 +52,11 @@ plot_ar1 = function(n = 5, rho = 0.7, save_path = NULL, width = 5, height = 5, d
       ) +
       ggplot2::coord_fixed() +
       ggplot2::scale_y_reverse()
+
   }
 
+# Plotar a figura
 
-
-
-  # Definition of the structure
-  mat = toeplitz(rho^(0:(n-1)))
-  df = reshape2::melt(mat)
   p = base_cartoon_plot(df, paste0("AR1 (2 params)"))
 
   # Salvar se o caminho for fornecido
@@ -57,8 +67,10 @@ plot_ar1 = function(n = 5, rho = 0.7, save_path = NULL, width = 5, height = 5, d
 
   print(p)
   print(as.matrix(mat))
+ }
 
-}
 
 plot_ar1()
+
+
 
