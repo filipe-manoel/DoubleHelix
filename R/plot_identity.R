@@ -17,6 +17,8 @@ plot_identity = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 3
 
   mat = diag(1, n)
   df = reshape2::melt(mat)
+
+
   # Estética padrão
 
   # Definir as cores
@@ -67,5 +69,3 @@ plot_identity = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 3
 
   }
 
-plot_identity()
-plot_ar1()
