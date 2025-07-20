@@ -64,7 +64,7 @@ plot_cov_operations = function(cov1, cov2,
   cov_fill_scale = function(limits = c(0, 1)) {
     # paleta contínua RColorBrewer, zeros → cinza claro
     scale_fill_distiller(
-      palette   = "YlOrRd",
+      palette   = "Spectral",
       direction = 1,
       limits    = limits,
       oob       = scales::squish,
@@ -73,34 +73,35 @@ plot_cov_operations = function(cov1, cov2,
   }
 
 
-  base_cartoon_plot = function(df, title) {
+  base_cartoon_plot = function(df, title, lims) {
     df$fill_val = ifelse(df$value == 0, NA, df$value)
 
     ggplot2::ggplot(df, ggplot2::aes(Var1, Var2, fill = fill_val)) +
       ggfx::with_shadow(
         ggplot2::geom_tile(color = "black", size = 1),
-        sigma    = 5, x_offset = 2, y_offset = 2, colour = "grey50"
+        sigma = 5, x_offset = 2, y_offset = 2, colour = "grey50"
       ) +
-      cov_fill_scale(limits = lims) +   # usa escala contínua comum
+      cov_fill_scale(limits = lims) +
       ggplot2::guides(fill = "none") +
       ggplot2::theme_void() +
       ggplot2::ggtitle(title) +
       ggplot2::theme(
-        plot.title      = ggplot2::element_text(family = "sans",
-                                                size   = 13,
-                                                hjust  = 0.5,
-                                                face   = "bold"),
-        plot.background = ggplot2::element_rect(fill = "transparent",
-                                                color = NA)
+        plot.title = ggplot2::element_text(family = "sans",
+                                           size = 13,
+                                           hjust = 0.5,
+                                           face = "bold"),
+        plot.background = ggplot2::element_rect(fill = "transparent", color = NA)
       ) +
       ggplot2::coord_fixed() +
       ggplot2::scale_y_reverse()
   }
 
+
   # Gera os três blocos
-  p1 = base_cartoon_plot(df1, name1)
-  p2 = base_cartoon_plot(df2, name2)
-  pR = base_cartoon_plot(dfR, paste0("Result"))
+  p1 = base_cartoon_plot(df1, name1, lims)
+  p2 = base_cartoon_plot(df2, name2, lims)
+  pR = base_cartoon_plot(dfR, paste0("Result"), lims)
+
 
   # Plot de símbolos
 
@@ -115,13 +116,17 @@ plot_cov_operations = function(cov1, cov2,
       ggplot2::theme_void()
   }
 
-
   p_sym = txt_plot(sym)
   p_eq  = txt_plot("=")
 
   # Combina em linha
-  combined = p1 + p_sym + p2 + p_eq + pR +
-    patchwork::plot_layout(nrow = 1, widths = c(1, .2, 1, .2, 1))
+
+  # Combina tudo com patchwork
+  combined = cowplot::plot_grid(
+    p1, p_sym, p2, p_eq, pR,
+    nrow = 1,
+    rel_widths = c(1, 0.2, 1, 0.2, 1)
+  )
 
   # Salva se solicitado
   if (!is.null(save_path)) {
@@ -137,8 +142,13 @@ plot_cov_operations = function(cov1, cov2,
 
 }
 
-cov1 = plot_ar1()
-cov2 = plot_ar1(3, 0.3)
 
-plot_cov_operation(cov1, cov2)
+cov1 = plot_ar1()
+cov2 = plot_diagonal()
+
+plot_cov_operations(cov1, cov2, op="kronecker")
+
+plot_cov_operations(cov1, cov2, op="direct_sum")
+
+plot_cov_operations(cov1, cov2, op="hadamard")
 

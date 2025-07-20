@@ -14,18 +14,17 @@
 #'
 plot_ar1 = function(n = 5, rho = 0.7, save_path = NULL, width = 5, height = 5, dpi = 300) {
 
-
   # Definition of the structure
   mat = toeplitz(rho^(0:(n-1)))
   df = reshape2::melt(mat)
 
-# Estética padrão
+  # Estética padrão
 
   # Definir as cores
   cov_fill_scale <- function(limits = c(0, 1)) {
     # paleta contínua RColorBrewer, zeros → cinza claro
     scale_fill_distiller(
-      palette   = "YlOrRd",
+      palette   = "Spectral",
       direction = 1,
       limits    = limits,
       oob       = scales::squish,
@@ -55,8 +54,7 @@ plot_ar1 = function(n = 5, rho = 0.7, save_path = NULL, width = 5, height = 5, d
 
   }
 
-# Plotar a figura
-
+  # Plotar a figura
   p = base_cartoon_plot(df, paste0("AR1 (2 params)"))
 
   # Salvar se o caminho for fornecido
@@ -68,9 +66,3 @@ plot_ar1 = function(n = 5, rho = 0.7, save_path = NULL, width = 5, height = 5, d
   print(p)
   print(as.matrix(mat))
  }
-
-
-plot_ar1()
-
-
-

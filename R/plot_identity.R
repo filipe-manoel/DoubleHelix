@@ -25,7 +25,7 @@ plot_identity = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 3
   cov_fill_scale <- function(limits = c(0, 1)) {
     # paleta contínua RColorBrewer, zeros → cinza claro
     scale_fill_distiller(
-      palette   = "YlOrRd",
+      palette   = "Spectral",
       direction = 1,
       limits    = limits,
       oob       = scales::squish,
@@ -68,4 +68,3 @@ plot_identity = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 3
     print(as.matrix(mat))
 
   }
-
