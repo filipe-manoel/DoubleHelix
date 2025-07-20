@@ -16,7 +16,7 @@ quantitative genetics through intuitive and customizable visualizations.
 
 ## Installation
 
-You can install the development version of `DoubleHelix`from
+You can install the development version of `DoubleHelix` from
 [GitHub](https://github.com/filipe-manoel/DoubleHelix) with:
 
 ``` r
@@ -33,26 +33,29 @@ structures.
 library(DoubleHelix)
 
 #Compound Simetry matrix
-DoubleHelix::plot_cs(n = 5, rho = 0.5, save_path = NULL, width = 5, height = 5, dpi = 300)
+plot_cs(n = 5, rho = 0.5, save_path = NULL, width = 5, height = 5, dpi = 300)
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example1-1.png" width="100%" />
 
 ``` r
 
 #Unstructured matrix
-DoubleHelix::plot_us(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300)
+plot_us(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300)
 ```
 
-<img src="man/figures/README-example-2.png" width="100%" />
+<img src="man/figures/README-example1-2.png" width="100%" />
 
 ``` r
 
 #First order factor analytic matrix
-DoubleHelix::plot_fa(n = 5, k = 1, save_path = NULL, width = 5, height = 5, dpi = 300)
+plot_fa(n = 5, k = 1, save_path = NULL, width = 5, height = 5, dpi = 300)
 ```
 
-<img src="man/figures/README-example-3.png" width="100%" />
+<img src="man/figures/README-example1-3.png" width="100%" />
+
+This is how you can do some matrices operation with covariance matrices
+using `plot_cov_operations`.
 
 ## Development Status
 

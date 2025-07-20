@@ -142,13 +142,3 @@ plot_cov_operations = function(cov1, cov2,
 
 }
 
-
-cov1 = plot_ar1()
-cov2 = plot_diagonal()
-
-plot_cov_operations(cov1, cov2, op="kronecker")
-
-plot_cov_operations(cov1, cov2, op="direct_sum")
-
-plot_cov_operations(cov1, cov2, op="hadamard")
-
