@@ -39,7 +39,7 @@ plot_fa = function(n = 5, k = 1, save_path = NULL, width = 5, height = 5, dpi = 
   base_cartoon_plot <- function(df, title) {
     df$fill_val <- ifelse(df$value == 0, NA, df$value)
 
-    ggplot2::ggplot(df, aes(Var1, Var2, fill = fill_val)) +
+    ggplot2::ggplot(df, ggplot2::aes(Var1, Var2, fill = fill_val)) +
       ggfx::with_shadow(
         ggplot2::geom_tile(color = "black", size = 1),
         sigma = 5, x_offset = 2, y_offset = 2, colour = "grey50"

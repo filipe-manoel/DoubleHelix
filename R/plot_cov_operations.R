@@ -63,7 +63,7 @@ plot_cov_operations = function(cov1, cov2,
 
   cov_fill_scale = function(limits = c(0, 1)) {
     # paleta contínua RColorBrewer, zeros → cinza claro
-    scale_fill_distiller(
+    ggplot2::scale_fill_distiller(
       palette   = "Spectral",
       direction = 1,
       limits    = limits,

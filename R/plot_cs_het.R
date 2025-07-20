@@ -26,7 +26,7 @@ plot_cs_het = function(n = 5, rho= 0.5, save_path = NULL, width = 5, height = 5,
   # Definir as cores
   cov_fill_scale <- function(limits = c(0, 1)) {
     # paleta contínua RColorBrewer, zeros → cinza claro
-    scale_fill_distiller(palette = "Spectral", direction = 1,
+    ggplot2::scale_fill_distiller(palette = "Spectral", direction = 1,
       limits = limits, oob = scales::squish, na.value = "grey90")
   }
 
@@ -34,7 +34,7 @@ plot_cs_het = function(n = 5, rho= 0.5, save_path = NULL, width = 5, height = 5,
   base_cartoon_plot <- function(df, title) {
     df$fill_val <- ifelse(df$value == 0, NA, df$value)
 
-    ggplot2::ggplot(df, aes(Var1, Var2, fill = fill_val)) +
+    ggplot2::ggplot(df, ggplot2::aes(Var1, Var2, fill = fill_val)) +
       ggfx::with_shadow(ggplot2::geom_tile(color = "black",
         size = 1), sigma = 5, x_offset = 2, y_offset = 2,
         colour = "grey50") + cov_fill_scale(limits = c(0,

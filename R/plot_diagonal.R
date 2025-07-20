@@ -25,7 +25,7 @@ plot_diagonal = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 3
   # Definir as cores
   cov_fill_scale <- function(limits = c(0, 1)) {
     # paleta contínua RColorBrewer, zeros → cinza claro
-    scale_fill_distiller(
+    ggplot2::scale_fill_distiller(
       palette   = "Spectral",
       direction = 1,
       limits    = limits,
@@ -38,7 +38,7 @@ plot_diagonal = function(n = 5, save_path = NULL, width = 5, height = 5, dpi = 3
   base_cartoon_plot <- function(df, title) {
     df$fill_val <- ifelse(df$value == 0, NA, df$value)
 
-    ggplot2::ggplot(df, aes(Var1, Var2, fill = fill_val)) +
+    ggplot2::ggplot(df, ggplot2::aes(Var1, Var2, fill = fill_val)) +
       ggfx::with_shadow(
         ggplot2::geom_tile(color = "black", size = 1),
         sigma = 5, x_offset = 2, y_offset = 2, colour = "grey50"

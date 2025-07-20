@@ -2,6 +2,7 @@
 
 export(plot_ar1)
 export(plot_ar1_het)
+export(plot_cov_operations)
 export(plot_cs)
 export(plot_cs_het)
 export(plot_diagonal)

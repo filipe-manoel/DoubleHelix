@@ -9,13 +9,13 @@ plot_us(n = 5, save_path = NULL, width = 5, height = 5, dpi = 300)
 \arguments{
 \item{n}{dimension of the matrix}
 
-\item{save_path}{Caminho para salvar o gráfico (.png). Se NULL, não salva.}
+\item{save_path}{Path to save the chart (.png). If NULL, do not save.}
 
-\item{width}{Largura do gráfico salvo, em polegadas.}
+\item{width}{Width of the saved chart, in inches.}
 
-\item{height}{Altura do gráfico salvo, em polegadas.}
+\item{height}{Height of the saved chart, in inches.}
 
-\item{dpi}{Resolução do gráfico salvo (dots per inch)}
+\item{dpi}{Resolution of the saved chart (dots per inch)}
 }
 \value{
 a figure
